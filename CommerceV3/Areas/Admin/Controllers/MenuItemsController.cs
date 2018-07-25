@@ -51,7 +51,7 @@ namespace CommerceV3.Areas.Admin.Controllers
         // GET: Admin/MenuItems/Create
         public IActionResult Create()
         {
-            ViewData["ParentMenuItemId"] = new SelectList(_context.MenuItems, "Id", "Id");
+            ViewData["ParentMenuItemId"] = new SelectList(_context.MenuItems, "Id", "Name");
             return View();
         }
 
@@ -68,7 +68,7 @@ namespace CommerceV3.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ParentMenuItemId"] = new SelectList(_context.MenuItems, "Id", "Id", menuItem.ParentMenuItemId);
+            ViewData["ParentMenuItemId"] = new SelectList(_context.MenuItems, "Id", "Name", menuItem.ParentMenuItemId);
             return View(menuItem);
         }
 
@@ -85,7 +85,7 @@ namespace CommerceV3.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["ParentMenuItemId"] = new SelectList(_context.MenuItems, "Id", "Id", menuItem.ParentMenuItemId);
+            ViewData["ParentMenuItemId"] = new SelectList(_context.MenuItems, "Id", "Name", menuItem.ParentMenuItemId);
             return View(menuItem);
         }
 
@@ -121,7 +121,7 @@ namespace CommerceV3.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ParentMenuItemId"] = new SelectList(_context.MenuItems, "Id", "Id", menuItem.ParentMenuItemId);
+            ViewData["ParentMenuItemId"] = new SelectList(_context.MenuItems, "Id", "Name", menuItem.ParentMenuItemId);
             return View(menuItem);
         }
 
