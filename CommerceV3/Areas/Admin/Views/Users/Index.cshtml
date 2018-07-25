@@ -9,9 +9,9 @@
 <table class="table" id="tblRecords">
     <thead>
         <tr>
-            <th>Kullanıcı Adı</th>
-            <th>E-posta Doğrulandı Mı?</th>
-            <th>Eylemler</th>
+            <th class="text-nowrap all">Kullanıcı Adı</th>
+            <th class="text-nowrap">E-posta Doğrulandı Mı?</th>
+            <th class="text-nowrap all"  data-orderable="false">Eylemler</th>
         </tr>
     </thead>
     <tbody>
@@ -20,7 +20,7 @@
             <tr>
                 <td>@item.Email</td>
                 <td>@(item.EmailConfirmed?"Evet":"Hayır")</td>
-                <td><a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Sil</a></td>
+                <td><a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger text-nowrap">Sil</a></td>
             </tr>            
         }                   
     </tbody>
