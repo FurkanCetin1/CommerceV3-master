@@ -47,7 +47,9 @@ namespace CommerceV3.Models
         [ForeignKey("BrandId")]
 		public Brand Brand { get; set; }
 
-		public virtual ICollection<ProductCategory> ProductCategories { get; set; }
+        public string Photo { get; set; }
+
+        public virtual ICollection<ProductCategory> ProductCategories { get; set; }
 
 		[Display(Name = "Oluşturan Kullanıcı")]
 		public string CreatedBy { get; set; }

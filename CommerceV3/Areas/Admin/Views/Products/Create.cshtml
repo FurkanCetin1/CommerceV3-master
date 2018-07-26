@@ -6,7 +6,7 @@
 <hr />
 <div class="row">
     <div class="col-md-12">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -43,13 +43,11 @@
                     <input asp-for="IsInStock" /> @Html.DisplayNameFor(model => model.IsInStock)
                 </label>
             </div>
-
             <div class="form-group">
                 <label>
                     <input asp-for="IsPublished" /> @Html.DisplayNameFor(model => model.IsPublished)
                 </label>
             </div>
-
             <div class="form-group">
                 <label>
                     <input asp-for="IsNew" /> @Html.DisplayNameFor(model => model.IsNew)
@@ -82,12 +80,16 @@
                     <option value="">Marka Seçiniz</option>
                 </select>
             </div>
-
             <input type="hidden" asp-for="CreatedBy" />
             <input type="hidden" asp-for="CreateDate" />
             <input type="hidden" asp-for="UpdatedBy" />
             <input type="hidden" asp-for="UpdateDate" />
-
+            <div class="form-group">
+                <label asp-for="Photo" class="control-label"></label>
+                <input asp-for="Photo" type="hidden" />
+                <input type="file" name="upload" class="form-control" />
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Gönder" class="btn btn-sm btn-primary" />
                 <a asp-action="Index" class="btn btn-sm btn-danger">İptal</a>

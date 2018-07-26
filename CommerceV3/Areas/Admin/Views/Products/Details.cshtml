@@ -14,6 +14,12 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+        <dd>
+            <img src="~/Uploads/@Model.Photo"width="150" />
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.Slug)
         </dt>
         <dd>

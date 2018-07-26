@@ -150,6 +150,8 @@ namespace CommerceV3.Data.Migrations
 
                     b.Property<decimal>("OldPrice");
 
+                    b.Property<string>("Photo");
+
                     b.Property<decimal>("Price");
 
                     b.Property<int>("Quantity");
