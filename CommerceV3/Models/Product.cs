@@ -11,10 +11,12 @@ namespace CommerceV3.Models
     {
 		public string Id { get; set; }
 		[Display(Name = "Ürün Adı")]
+        [StringLength(200)]
 		public string Name { get; set; }
-		[Display(Name = "Bağlantı")]
+		[Display(Name = "Bağlantı")]        
 		public string Slug { get; set; }
 		[Display(Name = "Açıklama")]
+        [StringLength(200)]
 		public string Description { get; set; }
 		[Display(Name = "Eski Fiyatı")]
 		public decimal OldPrice { get; set; }
@@ -35,28 +37,38 @@ namespace CommerceV3.Models
 		[Display(Name = "Kargo Ücreti(Dünya)")]
 		public decimal ShippingPriceInWorldWide { get; set; }
 
-        [Display(Name = "Tedarikçi")]
+        [Display(Name = "Tedarikçi")]       
         public string SupplierId { get; set; }
         [Display(Name = "Tedarikçi")]
         [ForeignKey("SupplierId")]
-		public Supplier Supplier{ get; set; }
+        [StringLength(200)]
+        public Supplier Supplier{ get; set; }
 
-        [Display(Name = "Marka")]
+        [Display(Name = "Marka")]        
         public string BrandId { get; set; }
         [Display(Name = "Marka")]
         [ForeignKey("BrandId")]
-		public Brand Brand { get; set; }
+        [StringLength(200)]
+        public Brand Brand { get; set; }
 
-        public string Photo { get; set; }
+        [Display(Name="Kategori")]
+        public string CategoryId { get; set; }
+        [ForeignKey("CategoryId")]
+        [Display(Name="Kategori")]
+        public Category Category { get; set; }
 
-        public virtual ICollection<ProductCategory> ProductCategories { get; set; }
+        [StringLength(200)]
+        [Display(Name="Fotoğraf")]
+        public string Photo { get; set; }    
 
 		[Display(Name = "Oluşturan Kullanıcı")]
-		public string CreatedBy { get; set; }
+        [StringLength(200)]
+        public string CreatedBy { get; set; }
 		[Display(Name = "Oluşturulma Tarihi")]
 		public DateTime CreateDate { get; set; }
 		[Display(Name = "Güncelleyen Kullanıcı")]
-		public string UpdatedBy { get; set; }
+        [StringLength(200)]
+        public string UpdatedBy { get; set; }
 		[Display(Name = "Güncellenme Tarihi")]
 		public DateTime UpdateDate { get; set; }
 

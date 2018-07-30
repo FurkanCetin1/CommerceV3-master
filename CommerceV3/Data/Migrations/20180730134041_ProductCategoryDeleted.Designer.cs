@@ -4,14 +4,16 @@ using CommerceV3.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CommerceV3.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180730134041_ProductCategoryDeleted")]
+    partial class ProductCategoryDeleted
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -142,6 +144,8 @@ namespace CommerceV3.Data.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("BrandId");
+
+                    b.Property<string>("Category");
 
                     b.Property<string>("CategoryId");
 
@@ -461,7 +465,7 @@ namespace CommerceV3.Data.Migrations
                         .WithMany("Products")
                         .HasForeignKey("BrandId");
 
-                    b.HasOne("CommerceV3.Models.Category", "Category")
+                    b.HasOne("CommerceV3.Models.Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId");
 

@@ -9,13 +9,16 @@ namespace CommerceV3.Models
 {
     public class MenuItem
     {
-		public String Id { get; set; }
+		public string Id { get; set; }
 		[Display(Name = "Menü Öğesi Adı")]
-		public String Name { get; set; }
+        [StringLength(200)]
+        public string Name { get; set; }
 		[Display(Name = "Bağlantı")]
-		public String Url { get; set; }
+        [StringLength(200)]
+        public string Url { get; set; }
 		[Display(Name = "Hedef")]
-		public String Target { get; set; }
+        [StringLength(200)]
+        public string Target { get; set; }
 		[Display(Name = "Yayında Mı ?")]
 		public bool IsPublished { get; set; }
 		[Display(Name = "Pozisyon")]

@@ -18,10 +18,12 @@ namespace CommerceV3.Models
 		public virtual ICollection<CartItem> CardItems { get; set; }
 
         [Display(Name = "Oluşturan Kullanıcı")]
+        [StringLength(200)]
         public String CreatedBy { get; set; }
         [Display(Name = "Oluşturulma Tarihi")]
         public DateTime CreateDate { get; set; }
         [Display(Name = "Güncelleyen Kullanıcı")]
+        [StringLength(200)]
         public String UpdatedBy { get; set; }
         [Display(Name = "Güncelleme Tarihi")]
         public DateTime UpdateDate { get; set; }

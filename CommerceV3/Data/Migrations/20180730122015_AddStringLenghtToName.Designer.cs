@@ -4,14 +4,16 @@ using CommerceV3.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CommerceV3.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180730122015_AddStringLenghtToName")]
+    partial class AddStringLenghtToName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,11 +26,9 @@ namespace CommerceV3.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Logo")
-                        .HasMaxLength(200);
+                    b.Property<string>("Logo");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(200);
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 
@@ -42,8 +42,7 @@ namespace CommerceV3.Data.Migrations
 
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<string>("CreatedBy")
-                        .HasMaxLength(200);
+                    b.Property<string>("CreatedBy");
 
                     b.Property<bool>("IsActive");
 
@@ -51,8 +50,7 @@ namespace CommerceV3.Data.Migrations
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("UpdatedBy")
-                        .HasMaxLength(200);
+                    b.Property<string>("UpdatedBy");
 
                     b.HasKey("Id");
 
@@ -84,8 +82,7 @@ namespace CommerceV3.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(200);
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 
@@ -97,8 +94,7 @@ namespace CommerceV3.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(200);
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 
@@ -114,18 +110,15 @@ namespace CommerceV3.Data.Migrations
 
                     b.Property<string>("MenuId");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(200);
+                    b.Property<string>("Name");
 
                     b.Property<string>("ParentMenuItemId");
 
                     b.Property<int>("Position");
 
-                    b.Property<string>("Target")
-                        .HasMaxLength(200);
+                    b.Property<string>("Target");
 
-                    b.Property<string>("Url")
-                        .HasMaxLength(200);
+                    b.Property<string>("Url");
 
                     b.HasKey("Id");
 
@@ -143,15 +136,11 @@ namespace CommerceV3.Data.Migrations
 
                     b.Property<string>("BrandId");
 
-                    b.Property<string>("CategoryId");
-
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<string>("CreatedBy")
-                        .HasMaxLength(200);
+                    b.Property<string>("CreatedBy");
 
-                    b.Property<string>("Description")
-                        .HasMaxLength(200);
+                    b.Property<string>("Description");
 
                     b.Property<bool>("IsInStock");
 
@@ -160,12 +149,11 @@ namespace CommerceV3.Data.Migrations
                     b.Property<bool>("IsPublished");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(200);
+                        .HasMaxLength(100);
 
                     b.Property<decimal>("OldPrice");
 
-                    b.Property<string>("Photo")
-                        .HasMaxLength(200);
+                    b.Property<string>("Photo");
 
                     b.Property<decimal>("Price");
 
@@ -183,18 +171,28 @@ namespace CommerceV3.Data.Migrations
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("UpdatedBy")
-                        .HasMaxLength(200);
+                    b.Property<string>("UpdatedBy");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BrandId");
 
-                    b.HasIndex("CategoryId");
-
                     b.HasIndex("SupplierId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("CommerceV3.Models.ProductCategory", b =>
+                {
+                    b.Property<string>("ProductId");
+
+                    b.Property<string>("CategoryId");
+
+                    b.HasKey("ProductId", "CategoryId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("ProductCategories");
                 });
 
             modelBuilder.Entity("CommerceV3.Models.Region", b =>
@@ -202,13 +200,11 @@ namespace CommerceV3.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(200);
+                    b.Property<string>("Name");
 
                     b.Property<string>("ParentRegionId");
 
-                    b.Property<int>("RegionType")
-                        .HasMaxLength(200);
+                    b.Property<int>("RegionType");
 
                     b.HasKey("Id");
 
@@ -222,21 +218,17 @@ namespace CommerceV3.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Image")
-                        .HasMaxLength(200);
+                    b.Property<string>("Image");
 
                     b.Property<bool>("IsPublished");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(200);
+                    b.Property<string>("Name");
 
                     b.Property<int>("Position");
 
-                    b.Property<string>("Target")
-                        .HasMaxLength(200);
+                    b.Property<string>("Target");
 
-                    b.Property<string>("Url")
-                        .HasMaxLength(200);
+                    b.Property<string>("Url");
 
                     b.HasKey("Id");
 
@@ -252,8 +244,7 @@ namespace CommerceV3.Data.Migrations
 
                     b.Property<string>("CreatedBy");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(200);
+                    b.Property<string>("Name");
 
                     b.Property<string>("RegionId");
 
@@ -461,13 +452,22 @@ namespace CommerceV3.Data.Migrations
                         .WithMany("Products")
                         .HasForeignKey("BrandId");
 
-                    b.HasOne("CommerceV3.Models.Category", "Category")
-                        .WithMany("Products")
-                        .HasForeignKey("CategoryId");
-
                     b.HasOne("CommerceV3.Models.Supplier", "Supplier")
                         .WithMany("Products")
                         .HasForeignKey("SupplierId");
+                });
+
+            modelBuilder.Entity("CommerceV3.Models.ProductCategory", b =>
+                {
+                    b.HasOne("CommerceV3.Models.Category", "Category")
+                        .WithMany("ProductCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CommerceV3.Models.Product", "Product")
+                        .WithMany("ProductCategories")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CommerceV3.Models.Region", b =>
